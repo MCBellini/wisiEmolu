@@ -24,6 +24,7 @@ class CreateEmolumentosTable extends Migration
             $table->string('registo');
             $table->string('folha');
             $table->string('ano');
+            $table->string('pagamento');
             $table->string('valor');
             $table->integer('user_id')-> unsigned();   
             $table->timestamps();

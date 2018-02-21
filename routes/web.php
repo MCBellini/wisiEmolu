@@ -17,7 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('emolumento/pdf',['uses'=>'pdfController@pdf','as'=>'emolumento.pdf']);
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource ('emolumento', 'emolumentoController');
+Route::resource ('emolumento','emolumentoController');
+
+Route::resource ('financas','financasController');
+
+Route::get('pdf/ver',[
+	'uses'=>'pdfController@show',
+	'as'=>'pdf.ver'
+]);
+
+
 

@@ -24,7 +24,7 @@ class emolumentoFormValidation extends FormRequest
     public function rules()
     {
         return [
-            'nEmolu'=> 'required|max:20',
+            //'nEmolu'=> 'required|max:20',
             'data'=> 'required|date',
             'requerente'=> 'required|max:100',
             'teorDoc'=> 'required|max:100',
@@ -33,6 +33,7 @@ class emolumentoFormValidation extends FormRequest
             'nRegisto'=> 'required|max:20',
             'nProcesso'=> 'required|max:20',
             'nFolha'=> 'required|max:20',
+            'pagamento'=> 'required|max:20',
             'ano'=> 'required|max:4',
             'valor'=> 'required|max:10'
         ];
@@ -53,6 +54,7 @@ class emolumentoFormValidation extends FormRequest
             'nFolha.required'=> 'Inserir nrº Folha',
             'ano.required'=> 'Inserir Ano',
             'valor.required'=> 'Inserir Valor',
+            'pagamento.required'=> 'Inserir Tipo de Pagamento',
             'valor.max' => 'O valor não pode ter mais que 10 carateres',
             'data.date' => 'campo errado',
             'ano.max'=>'Campo ano não pode conter mais que 4 caracteres'

@@ -10,9 +10,12 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    @yield('styles')
+
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('css/form.css') }}" rel="stylesheet" media="all">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet" media="all">
 </head>
 <body>
 <div id="app">
@@ -26,6 +29,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a href="{{route('emolumento.create')}}" style="text-decoration: none; color: black; ">Livro de Emolumentos</a>
+
+            <a href="{{route('financas.create')}}" style="text-decoration: none; color: black; padding-left: 10px;">Finanças</a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     @if (Auth::guest())
@@ -68,5 +73,12 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
+ <script>
+      $('#summernote').summernote({
+        
+        height: 100
+      });
+    </script>
 </body>
 </html>

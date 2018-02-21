@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\emolumentoFormValidation;
-use App\emolumentos;
+use App\Http\Requests\financasFormValidation;
+use App\Financas;
 use Auth;
-
-class emolumentoController extends Controller
+class financasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +25,7 @@ class emolumentoController extends Controller
      */
     public function create()
     {
-        return view('emolumento.create');
+        return view('tabelaFinancas.tabelaFinancas');
     }
 
     /**
@@ -35,34 +34,24 @@ class emolumentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(emolumentoFormValidation $request)
+    public function store(financasFormValidation $request)
     {
-   
-        for ($i=0;
-            $i<50;
-            $i++){
-
-        
-        $registo = emolumentos::create([ 
-                'data'=>$request->data,
-                'requerente' =>$request->requerente,
-                'teorDocumento' =>$request->teorDoc,
-                'nProcesso' =>$request->nProcesso,
-                'livro'=>$request->nLivro,
-                'cota'=>$request->nCota,
-                'registo'=>$request->nRegisto,
-                'folha'=>$request->nFolha,
-                'ano'=>$request->ano,
-                'pagamento'=>$request->pagamento,
-                'valor'=>$request->valor,
+        //dd($request);
+        $registo = Financas::create([ 
+                'tipo'=>$request->tipo,
+                'dataInicial'=>$request->dataInicial,
+                'dataFinal'=>$request->dataFinal,
+                'data' =>$request->data,
+                'concelho'=>$request->concelho,
+                'freguesia'=>$request->freguesia,
+                'entidade'=>$request->entidade,
+                'nome'=>$request->nome,
+                'morada'=>$request->morada,
+                'descricao'=>$request->descricao,
                 'user_id'=>Auth::user()->id
                  ]);
+        return redirect()->back();
     }
-   
-        return redirect()->back(); 
-
-    }
-        
 
     /**
      * Display the specified resource.
@@ -70,14 +59,9 @@ class emolumentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-
     public function show($id)
     {
-       $registo=emolumentos::all() ;
-
-            return view ('emolumento.result')->with ('dados',$registo);
-        
+        //
     }
 
     /**
