@@ -59,7 +59,7 @@
 	</div>
 	<div class="text-center">
 		<button class="btn btn-outline-success" type="submit">Guardar</button>
-	    
+	    <button type="button" class="btn btn-outline-info">Ver</button>
 	</div>
 
 </form>
